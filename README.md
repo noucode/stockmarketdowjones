@@ -24,11 +24,11 @@ Or the following one:
   
 # Querying the Database
 You can use either Curl or Postmman to query the database;
-Examples GET requests:
+- Examples GET requests:
 http://localhost:8080/dowjonesdatas/
 http://localhost:8080/dowjonesdatas/AA
 
-Examples POST request:
+- Examples POST request:
 http://localhost:8080/upload-file
 
 
