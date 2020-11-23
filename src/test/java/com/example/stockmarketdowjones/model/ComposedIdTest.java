@@ -17,3 +17,5 @@ public class ComposedIdTest {
 		assertEquals("BAC", composedId.getStock());
 	}
 }
+
+
