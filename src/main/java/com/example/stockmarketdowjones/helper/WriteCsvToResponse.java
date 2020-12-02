@@ -2,7 +2,6 @@ package com.example.stockmarketdowjones.helper;
 
 import java.io.PrintWriter;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.stockmarketdowjones.model.DowJonesData;
@@ -36,7 +35,8 @@ public class WriteCsvToResponse {
 
             btcsv.write(dowjonesdatas);
 
-        } catch (CsvException ex) {
+        } 
+        catch (CsvException ex) {
             LOGGER.error("Error mapping Bean to CSV", ex);
         }
     }
@@ -60,7 +60,8 @@ public class WriteCsvToResponse {
 
             btcsv.write(dowjonesdata);
 
-        } catch (CsvException ex) {
+        } 
+        catch (CsvException ex) {
             LOGGER.error("Error mapping Bean to CSV", ex);
         }
     }
