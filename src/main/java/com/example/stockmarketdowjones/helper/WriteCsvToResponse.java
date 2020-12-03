@@ -4,6 +4,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+
 import com.example.stockmarketdowjones.model.DowJonesData;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
@@ -15,7 +17,11 @@ import com.opencsv.exceptions.CsvException;
 public class WriteCsvToResponse {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WriteCsvToResponse.class);
+    
+	@Value("${error.mapping.bean}")
+	private static String mappingBeanError;
 
+	
     public static void writeDowJonesDatas(PrintWriter writer, List<DowJonesData> dowjonesdatas) {
 
         try {
@@ -37,7 +43,7 @@ public class WriteCsvToResponse {
 
         } 
         catch (CsvException ex) {
-            LOGGER.error("Error mapping Bean to CSV", ex);
+            LOGGER.error(mappingBeanError, ex);
         }
     }
 
@@ -62,7 +68,7 @@ public class WriteCsvToResponse {
 
         } 
         catch (CsvException ex) {
-            LOGGER.error("Error mapping Bean to CSV", ex);
+            LOGGER.error(mappingBeanError, ex);
         }
     }
 

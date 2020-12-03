@@ -12,6 +12,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +27,19 @@ import com.opencsv.bean.CsvToBeanBuilder;
 public class DowJonesDataStorageService implements StorageService  {
 
     private final Path rootLocation;
-
+    
+	@Value("${error.store.file}")
+	private String fileError;
+    
+	@Value("${error.store.emptyfile}")
+	private String emptyfileError;
+    
+	@Value("${error.storage.location}")
+	private String storageLocationError;
+    
+	@Value("${error.store.relative.path}")
+	private String relativePathError;
+    
     @Autowired
     public DowJonesDataStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
@@ -38,22 +51,20 @@ public class DowJonesDataStorageService implements StorageService  {
         try {
             Files.createDirectories(rootLocation);
         } catch (IOException e) {
-            throw new StorageException("Could not initialize storage location", e);
+            throw new StorageException(storageLocationError, e);
         }
     }
 
-    
+	   
     @Override
     public String storeFile(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if (file.isEmpty()) {
-                throw new StorageException("Failed to store empty file " + filename);
+                throw new StorageException(emptyfileError + filename);
             }
             if (filename.contains("..")) {
-                throw new StorageException(
-                        "Cannot store file with relative path outside current directory "
-                                + filename);
+                throw new StorageException(relativePathError + filename);
             }
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, this.rootLocation.resolve(filename),
@@ -61,7 +72,7 @@ public class DowJonesDataStorageService implements StorageService  {
             }
         }
         catch (IOException e) {
-            throw new StorageException("Failed to store file " + filename, e);
+            throw new StorageException(emptyfileError + filename, e);
         }
 
         return filename;
@@ -71,31 +82,28 @@ public class DowJonesDataStorageService implements StorageService  {
 
     @Override
     public List<DowJonesData> storetoDB(MultipartFile file) {
+        String filename = StringUtils.cleanPath(file.getOriginalFilename());
 
-        // parse CSV file to create a list of `User` objects
+        /** parse CSV file to create a list of DowJonesData objects  */
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) 
         {
 
-            // create csv bean reader
+            /** create csv bean reader  */
             CsvToBean<DowJonesData> csvToBean = new CsvToBeanBuilder<DowJonesData>(reader)
                     .withType(DowJonesData.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
 
-            // convert CsvToBean object to list of DowJonesData objects
+            /** convert CsvToBean object to list of DowJonesData objects  */
             List<DowJonesData> dowonesdatas = csvToBean.parse();
             return dowonesdatas ;
 
         } 
         catch (IOException e) {
-            throw new StorageException("Failed to store file " + "filename", e);
+            throw new StorageException(emptyfileError + filename, e);
         }
     	
     }    
 
 }
-
-
-
-
 

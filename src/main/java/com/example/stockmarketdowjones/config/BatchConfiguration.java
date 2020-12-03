@@ -15,6 +15,7 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -24,6 +25,9 @@ import com.example.stockmarketdowjones.model.DowJonesData;
 @Configuration
 @EnableBatchProcessing
 public class BatchConfiguration {
+    
+	@Value("${file.index.data}")
+	private String fileIndexData;
 	
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
@@ -35,7 +39,7 @@ public class BatchConfiguration {
 	public FlatFileItemReader<DowJonesData> reader() {
 	  return new FlatFileItemReaderBuilder<DowJonesData>()
 	    .name("dowjonesdataItemReader")
-	    .resource(new ClassPathResource("dow_jones_index,csv"))
+	    .resource(new ClassPathResource(fileIndexData))
 	    .delimited()
 	    .names(new String[]{"quarter", "stock", "date", "open", "high", "low", "close", "volume", "percent_change_price", "percent_change_volume_over_last_wk", "previous_weeks_volume", "next_weeks_open", "next_weeks_close", "percent_change_next_weeks_price", "days_to_next_dividend", "percent_return_next_dividend"})
 	    .fieldSetMapper(new BeanWrapperFieldSetMapper<DowJonesData>() {{

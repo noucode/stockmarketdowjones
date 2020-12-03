@@ -32,7 +32,8 @@ public class DowJonesDataController {
     @ApiOperation(value = "List Dow Jones Data",notes = "List all Dow Jones Data")
     @ApiResponses(value = {
         @ApiResponse(code = 200,message = "Dow Jones Data found"),
-        @ApiResponse(code = 404,message = "Dow Jones Data not found")
+        @ApiResponse(code = 404,message = "Dow Jones Data not found"),
+        @ApiResponse(code = 500, message = "Server error")
     })
     public void findDowJonesDatas(HttpServletResponse response) throws IOException {
 
@@ -46,6 +47,7 @@ public class DowJonesDataController {
     @ApiResponses(value = {
         @ApiResponse(code = 200,message = "Dow Jones Data found"),
         @ApiResponse(code = 404,message = "Dow Jones Data not found"),
+        @ApiResponse(code = 500, message = "Server error")
     })
   	public void findDowJonesData(@PathVariable String stock, HttpServletResponse response) throws IOException {
 
@@ -58,7 +60,8 @@ public class DowJonesDataController {
     @ApiOperation(value = "Add new Dow Jones Data",notes = "It permits to upload and add Dow Jones Data in DB")
     @ApiResponses(value = {
         @ApiResponse(code = 201,message = "Dow Jones Data added successfully"),
-        @ApiResponse(code = 400,message = "Invalid request")
+        @ApiResponse(code = 400,message = "Invalid request"),
+        @ApiResponse(code = 500, message = "Server error")
     })
     @ResponseBody
     public FileResponse uploadFile(@RequestParam("file") MultipartFile file) {
@@ -71,6 +74,5 @@ public class DowJonesDataController {
 
         return new FileResponse(name, uri, file.getContentType(), file.getSize());
     }
-
 
 }

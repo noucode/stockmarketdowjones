@@ -221,6 +221,12 @@ public class DowJonesData implements Serializable {
 		this.percent_return_next_dividend = percent_return_next_dividend;
 	}
 
+	@Override
+	public String toString() {
+		return "DowJonesData [quarter=" + quarter + ", stock=" + stock + ", date=" + date + ", open=" + open + ", high="
+				+ high + ", low=" + low + ", close=" + close + ", volume=" + volume + "]";
+	}
+	
 }
 
 

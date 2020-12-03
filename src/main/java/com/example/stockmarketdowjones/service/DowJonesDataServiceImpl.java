@@ -43,5 +43,3 @@ public class DowJonesDataServiceImpl  implements DowJonesDataService{
     
 }
 
-
-
