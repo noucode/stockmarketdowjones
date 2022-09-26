@@ -14,6 +14,17 @@ I did not test as much as I would like because I did not have time.
 For the same reason I did not comment much and also did not design in a way that Unit tests can run independently of other tests. 
 Also there is a couple of hard-coding still for the same reason.
 
+### Building the Project
+- Navigate to: https://github.com/noucode/stockmarketdowjones.git 
+- Select the master branch.
+- Clone https://github.com/noucode/stockmarketdowjones.git locally
+- From the project root folder run the following command: 
+```
+$ mvn clean install
+```
+- Then run the following command: $ java -jar target/stockmarketdowjones-0.0.1-SNAPSHOT.war
+- Or the following one: $ mvn spring-boot:run
+
 ### Running the Project
 - Just clone https://github.com/noucode/stockmarketdowjones.git locally.
 - Make sure you checkout on the master branch.
