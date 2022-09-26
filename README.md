@@ -28,11 +28,11 @@ Also there is a couple of hard-coding still for the same reason.
 
 ## Running the Project
 - **On Local Machine:**
-  - Eikther run the ollowing command:
+  - *Either run the ollowing command:*
     ```
     $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
     ```
-  - Or the following one:
+  - *Or the following one:*
     ```
     $ mvn spring-boot:run
     ```
