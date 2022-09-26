@@ -27,7 +27,7 @@ Also there is a couple of hard-coding still for the same reason.
   ```
 
 ## Running the Project
-- On Local Machine:
+- **On Local Machine:**
   - Eikther run the ollowing command:
     ```
     $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
@@ -36,7 +36,7 @@ Also there is a couple of hard-coding still for the same reason.
     ```
     $ mvn spring-boot:run
     ```
-- On Server Machine:
+- **On Server Machine:**
     ```
     $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
     ```
