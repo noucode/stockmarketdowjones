@@ -18,13 +18,13 @@ Also there is a couple of hard-coding still for the same reason.
 - Navigate to: https://github.com/noucode/stockmarketdowjones.git 
 - Select the master branch.
 - Clone the project locally:
-```
-$ git clone https://github.com/noucode/stockmarketdowjones.git
-```
+  ```
+  $ git clone https://github.com/noucode/stockmarketdowjones.git
+  ```
 - From the project root folder run the following command: 
-```
-$ mvn clean install
-```
+  ```
+  $ mvn clean install
+  ```
 - Then run the following command: $ java -jar target/stockmarketdowjones-0.0.1-SNAPSHOT.war
 - Or the following one: $ mvn spring-boot:run
 
