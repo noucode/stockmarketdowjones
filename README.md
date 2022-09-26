@@ -30,7 +30,7 @@ Also there is a couple of hard-coding still for the same reason.
 - On Local Machine:
   - Eikther run the ollowing command:
     ```
-    $ mvn clean install
+    $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
     ```
   - Or the following one:
     ```
@@ -38,7 +38,7 @@ Also there is a couple of hard-coding still for the same reason.
     ```
 - On Server Machine:
     ```
-    $ mvn spring-boot:run
+    $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
     ```
 
 ### Querying the Database
