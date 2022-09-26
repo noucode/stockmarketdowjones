@@ -17,7 +17,10 @@ Also there is a couple of hard-coding still for the same reason.
 ### Building the Project
 - Navigate to: https://github.com/noucode/stockmarketdowjones.git 
 - Select the master branch.
-- Clone https://github.com/noucode/stockmarketdowjones.git locally
+- Clone the project locally:
+```
+$ git clone https://github.com/noucode/stockmarketdowjones.git
+```
 - From the project root folder run the following command: 
 ```
 $ mvn clean install
