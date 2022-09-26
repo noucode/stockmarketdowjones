@@ -28,18 +28,29 @@ Also there is a couple of hard-coding still for the same reason.
 
 ## Running the Project
 - **On Local Machine:**
-  - *Either run the ollowing command:*
+  - *Either run the following command rom the project directory:*
     ```
     $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
     ```
-  - *Or the following one:*
+  - *Or run the following command:*
     ```
     $ mvn spring-boot:run
     ```
-- **On Server Machine:**
+- **On Pre-production Server Machine:**
+  - *Running the Application in the Background as Linux Service:*
+    ```
+    $ sudo su - srvportal
+    $ sudo systemctl start portalbatchjobservice
+    ```
+  - *Running the Application in the Foreground:*
     ```
     $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
     ```
+- **On Production Server Machine:**
+    ```
+    $ java -jar stockmarketdowjones-0.0.1-SNAPSHOT.war
+    ```
+
 
 ### Querying the Database
 You can use either Curl or Postmman to query the database;
