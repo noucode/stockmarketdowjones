@@ -18,7 +18,9 @@ Also there is a couple of hard-coding still for the same reason.
 - Just clone https://github.com/noucode/stockmarketdowjones.git locally.
 - Make sure you checkout on the master branch.
 - From the project root folder optionally run the following command: 
-```$ mvn clean install```
+```
+$ mvn clean install
+```
 - Then run the following command: $ java -jar target/stockmarketdowjones-0.0.1-SNAPSHOT.war
 - Or the following one: $ mvn spring-boot:run
 
