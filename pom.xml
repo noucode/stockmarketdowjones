@@ -20,6 +20,7 @@
 	</properties>
 
 	<dependencies>
+	 
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger2</artifactId>
@@ -29,7 +30,8 @@
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
 		    <version>2.5.0</version>
-		</dependency>
+		</dependency>  
+		
 	
 		<dependency>
 		    <groupId>com.opencsv</groupId>
@@ -49,25 +51,32 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		
+		<!-- Adding H2 in-memory Database Dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency> 
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-validation</artifactId>
-</dependency>
-		
-<!-- 		
+
+<!-- -->		
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<scope>runtime</scope>
 		</dependency>
- -->		
+		
+		
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId> 
+</dependency>
+		
+ 		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
